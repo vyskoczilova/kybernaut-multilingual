@@ -1,0 +1,22 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "kybernaut/language-switcher",
+	"title": "Language switcher",
+	"category": "widgets",
+	"icon": "translation",
+	"description": "Links to the other language versions of the current page.",
+	"keywords": [ "language", "translation", "hreflang", "menu" ],
+	"textdomain": "kybernaut-multilingual",
+	"attributes": {
+		"showCurrent": { "type": "boolean", "default": true }
+	},
+	"usesContext": [ "openSubmenusOnClick" ],
+	"supports": {
+		"html": false,
+		"align": [ "left", "center", "right" ],
+		"spacing": { "margin": true, "padding": true },
+		"typography": { "fontSize": true }
+	},
+	"editorScript": "file:./index.js"
+}

@@ -1,0 +1,135 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: cs_CZ\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Domain: kybernaut-multilingual\n"
+
+msgid "— None —"
+msgstr "— Žádná —"
+
+msgid "— Not a language root —"
+msgstr "— Není jazykový kořen —"
+
+msgid "\"%s\" is not a valid hreflang code, the row was skipped."
+msgstr "„%s“ není platný hreflang kód, řádek byl přeskočen."
+
+msgid "%s (already translated)"
+msgstr "%s (už přeloženo)"
+
+msgid "%s (used by another page)"
+msgstr "%s (používá jiná stránka)"
+
+msgid "Add a language in <a href=\"%s\">Settings → Multilingual</a> first."
+msgstr "Nejprve přidejte jazyk v <a href=\"%s\">Nastavení → Vícejazyčnost</a>."
+
+msgid "Add the switcher with the %1$s block or the %2$s shortcode."
+msgstr "Přepínač vložíte blokem %1$s nebo shortcodem %2$s."
+
+msgid "Clear the code to remove a language. Fill the empty row and save to add one."
+msgstr "Jazyk odstraníte smazáním kódu. Nový přidáte vyplněním prázdného řádku a uložením."
+
+msgid "Default language"
+msgstr "Výchozí jazyk"
+
+msgid "Hide the language"
+msgstr "Jazyk skrýt"
+
+msgid "Hreflang code"
+msgstr "Hreflang kód"
+
+msgid "Language"
+msgstr "Jazyk"
+
+msgid "Language \"%s\" is listed more than once, the duplicate was skipped."
+msgstr "Jazyk „%s“ je uveden vícekrát, duplicita byla přeskočena."
+
+msgid "language root"
+msgstr "jazykový kořen"
+
+msgid "Language root"
+msgstr "Jazykový kořen"
+
+msgid "Language switcher"
+msgstr "Přepínač jazyků"
+
+msgid "Link to the language home (its root page, or the site homepage)"
+msgstr "Odkázat na úvod jazyka (jeho kořenovou stránku nebo hlavní stránku webu)"
+
+msgid "Locale"
+msgstr "Locale"
+
+msgid "Missing translation"
+msgstr "Chybějící překlad"
+
+msgid "Multilingual"
+msgstr "Vícejazyčnost"
+
+msgid "None. To add one, create a page inside a language root and link it to this page."
+msgstr "Žádné. Překlad přidáte vytvořením stránky v jazykovém kořeni a propojením s touto stránkou."
+
+msgid "not linked"
+msgstr "nepropojeno"
+
+msgid "Not set yet"
+msgstr "Zatím nenastaveno"
+
+msgid "Only used when this page is inside a language root. Save and reload after changing the parent page."
+msgstr "Použije se jen u stránky uvnitř jazykového kořene. Po změně nadřazené stránky uložte a obnovte editor."
+
+msgid "Other languages"
+msgstr "Další jazyky"
+
+msgid "Pages inside a language root (a top-level page marked with a language in its \"Language\" box) are in that language. Link each translated page to its counterpart in the same box."
+msgstr "Stránky uvnitř jazykového kořene (stránky nejvyšší úrovně, které má v boxu „Jazyk“ nastavený jazyk) jsou v daném jazyce. Každou přeloženou stránku propojte s jejím protějškem ve stejném boxu."
+
+msgid "Settings"
+msgstr "Nastavení"
+
+msgid "Site homepage"
+msgstr "Hlavní stránka webu"
+
+msgid "Switcher label"
+msgstr "Popisek v přepínači"
+
+msgid "The default language code is not a valid hreflang code (e.g. \"cs\" or \"cs-CZ\"). The previous value was kept."
+msgstr "Kód výchozího jazyka není platný hreflang kód (např. „cs“ nebo „cs-CZ“). Zůstala původní hodnota."
+
+msgid "The page in the default language this page translates."
+msgstr "Stránka ve výchozím jazyce, kterou tato stránka překládá."
+
+msgid "The site language from Settings → General."
+msgstr "Jazyk webu z Nastavení → Obecné."
+
+msgid "This page and all its subpages will be in the selected language."
+msgstr "Tato stránka a všechny její podstránky budou ve zvoleném jazyce."
+
+msgid "translation of %s"
+msgstr "překlad stránky %s"
+
+msgid "Translation of"
+msgstr "Překlad stránky"
+
+msgid "Translations"
+msgstr "Překlady"
+
+msgid "WordPress locale"
+msgstr "WordPress locale"
+
+msgctxt "block title"
+msgid "Language switcher"
+msgstr "Přepínač jazyků"
+
+msgctxt "block description"
+msgid "Links to the other language versions of the current page."
+msgstr "Odkazy na další jazykové verze aktuální stránky."
+
+msgid "Lightweight translations of a few pages: nest them under a language root page (e.g. /en/), link them to their counterparts and get hreflang, locale switching and a language switcher."
+msgstr "Odlehčené překlady několika stránek: vnořte je pod kořenovou stránku jazyka (např. /en/), propojte s protějšky a získáte hreflang, přepnutí jazyka a přepínač jazyků."
+
+
+msgid "%1$s (%2$s)"
+msgstr "%1$s (%2$s)"
+
+msgid "Show current language"
+msgstr "Zobrazit aktuální jazyk"
