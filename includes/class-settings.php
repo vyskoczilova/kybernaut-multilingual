@@ -80,15 +80,21 @@ final class Settings {
 			$defaults = self::defaults();
 			$saved    = is_array( $saved ) ? $saved : $defaults;
 
+			// Rows may come from an older version or a manual option edit: fill in the keys readers rely on.
 			$languages = array();
 			foreach ( (array) ( $saved['languages'] ?? array() ) as $language ) {
-				if ( ! empty( $language['code'] ) ) {
-					$languages[ $language['code'] ] = $language;
+				if ( is_array( $language ) && ! empty( $language['code'] ) ) {
+					$languages[ $language['code'] ] = $language + array(
+						'label'  => strtoupper( $language['code'] ),
+						'locale' => 'en_US',
+					);
 				}
 			}
 
+			$default = ! empty( $saved['default']['code'] ) ? $saved['default'] : $defaults['default'];
+
 			self::$settings = array(
-				'default'   => is_array( $saved['default'] ?? null ) ? $saved['default'] : $defaults['default'],
+				'default'   => $default + array( 'label' => strtoupper( $default['code'] ) ),
 				'languages' => $languages,
 				'missing'   => self::sanitize_missing( $saved['missing'] ?? '' ),
 			);

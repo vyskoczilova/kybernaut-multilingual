@@ -60,7 +60,10 @@ final class Context {
 			return array();
 		}
 
-		$map    = Map::get();
+		$map = Map::get();
+		if ( ! isset( $map['urls'][ $key ] ) ) {
+			return array(); // Not public (draft, private, password): no hreflang cluster without a self-reference.
+		}
 		$target = isset( $map['lang'][ $key ] ) ? ( $map['links'][ $key ] ?? null ) : $key;
 		if ( null === $target || empty( $map['reverse'][ $target ] ) ) {
 			return array();

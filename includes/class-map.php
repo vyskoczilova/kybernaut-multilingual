@@ -271,10 +271,17 @@ final class Map {
 			$map['reverse'][ $target ][ $code ] = $id;
 		}
 
-		// Permalinks of every public page the front end may link to.
-		_prime_post_caches( array_keys( $pages ), false, false );
-		$linkable = array_merge( array_values( $map['roots'] ), array_keys( $map['links'] ), array_filter( $map['links'], 'is_int' ) );
-		foreach ( array_unique( $linkable ) as $id ) {
+		// Permalinks of every public page the front end may link to. get_permalink() needs each page
+		// and its ancestors loaded, so prime just those instead of every page on the site.
+		$linkable = array_unique( array_merge( array_values( $map['roots'] ), array_keys( $map['links'] ), array_filter( $map['links'], 'is_int' ) ) );
+		$prime    = array();
+		foreach ( $linkable as $id ) {
+			for ( $p = $id; $p && isset( $pages[ $p ] ) && ! isset( $prime[ $p ] ); $p = (int) $pages[ $p ]->post_parent ) {
+				$prime[ $p ] = true;
+			}
+		}
+		_prime_post_caches( array_keys( $prime ), false, false );
+		foreach ( $linkable as $id ) {
 			if ( 'publish' === $pages[ $id ]->post_status && '' === $pages[ $id ]->post_password ) {
 				$map['urls'][ $id ] = get_permalink( $id );
 			}

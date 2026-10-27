@@ -85,8 +85,9 @@ final class Settings_Page {
 			return $previous;
 		}
 
-		$errors  = array();
-		$default = array(
+		$errors    = array();
+		$available = get_available_languages();
+		$default   = array(
 			'code'  => self::sanitize_code( $input['default']['code'] ?? '' ),
 			'label' => sanitize_text_field( (string) ( $input['default']['label'] ?? '' ) ),
 		);
@@ -111,7 +112,7 @@ final class Settings_Page {
 			}
 
 			$code   = self::sanitize_code( $raw_code );
-			$locale = self::sanitize_locale( $row['locale'] ?? '' );
+			$locale = self::sanitize_locale( $row['locale'] ?? '', $available );
 			$label  = sanitize_text_field( (string) ( $row['label'] ?? '' ) );
 
 			if ( '' === $code ) {
@@ -165,12 +166,13 @@ final class Settings_Page {
 	/**
 	 * Accept only installed locales; anything else falls back to en_US, which is always available.
 	 *
-	 * @param mixed $locale Raw locale.
+	 * @param mixed    $locale    Raw locale.
+	 * @param string[] $available Installed locales from get_available_languages().
 	 * @return string
 	 */
-	private static function sanitize_locale( $locale ) {
+	private static function sanitize_locale( $locale, $available ) {
 		$locale = (string) $locale;
-		return in_array( $locale, get_available_languages(), true ) ? $locale : 'en_US';
+		return in_array( $locale, $available, true ) ? $locale : 'en_US';
 	}
 
 	/**
@@ -189,7 +191,8 @@ final class Settings_Page {
 			'label'  => '',
 			'locale' => '',
 		);
-		$map = Map::get();
+		$map       = Map::get();
+		$available = get_available_languages();
 		?>
 		<div class="wrap">
 			<h1><?php esc_html_e( 'Multilingual', 'kybernaut-multilingual' ); ?></h1>
@@ -240,7 +243,7 @@ final class Settings_Page {
 											'id'        => "kbnt-ml-locale-{$i}",
 											'name'      => "{$name}[languages][{$i}][locale]",
 											'selected'  => $row['locale'],
-											'languages' => get_available_languages(),
+											'languages' => $available,
 											'show_available_translations' => false,
 											'explicit_option_en_us'       => true,
 										)
