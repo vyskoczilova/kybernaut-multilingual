@@ -185,12 +185,7 @@ final class Admin {
 			esc_html_e( 'None. To add one, create a page inside a language root and link it to this page.', 'kybernaut-multilingual' );
 		}
 		foreach ( $translations as $code => $id ) {
-			printf(
-				'%1$s: <a href="%2$s">%3$s</a><br>',
-				esc_html( $labels[ $code ] ?? $code ),
-				esc_url( get_edit_post_link( $id ) ),
-				esc_html( get_the_title( $id ) )
-			);
+			echo esc_html( $labels[ $code ] ?? $code ) . ': ' . self::page_link( $id ) . '<br>'; // phpcs:ignore WordPress.Security.EscapeOutput -- page_link() is escaped.
 		}
 		echo '</p>';
 	}
@@ -232,7 +227,8 @@ final class Admin {
 			if ( $valid && is_int( $target ) ) {
 				$page  = get_post( $target );
 				$valid = $page && 'page' === $page->post_type && $target !== $post_id
-					&& in_array( $page->post_status, self::STATUSES, true ) && ! Settings::is_extra( Map::language_of( $target ) );
+					&& in_array( $page->post_status, self::STATUSES, true ) && ! Settings::is_extra( Map::language_of( $target ) )
+					&& current_user_can( 'read_post', $target ); // Same pages the select offers.
 			}
 
 			if ( $valid ) {
@@ -312,7 +308,7 @@ final class Admin {
 	}
 
 	/**
-	 * Escaped edit link for a map key.
+	 * Escaped title of a map key, linked to the editor when the user may edit the page.
 	 *
 	 * @param int|string $id Page ID or 'home'.
 	 * @return string
@@ -321,6 +317,8 @@ final class Admin {
 		if ( Map::HOME === $id ) {
 			return esc_html__( 'Site homepage', 'kybernaut-multilingual' );
 		}
-		return sprintf( '<a href="%s">%s</a>', esc_url( get_edit_post_link( $id ) ), esc_html( get_the_title( $id ) ) );
+		$title = esc_html( get_the_title( $id ) );
+		$url   = get_edit_post_link( $id );
+		return $url ? sprintf( '<a href="%s">%s</a>', esc_url( $url ), $title ) : $title;
 	}
 }

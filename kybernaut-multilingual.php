@@ -39,6 +39,14 @@ require_once __DIR__ . '/includes/class-context.php';
 require_once __DIR__ . '/includes/class-frontend.php';
 require_once __DIR__ . '/includes/class-switcher.php';
 
+// Before Switcher::register_hooks(): block.json strings are translated when the block is registered on init.
+add_action(
+	'init',
+	static function () {
+		load_plugin_textdomain( 'kybernaut-multilingual', false, dirname( plugin_basename( PLUGIN_FILE ) ) . '/languages' );
+	}
+);
+
 Settings::register_hooks();
 Map::register_hooks();
 Frontend::register_hooks();
@@ -55,12 +63,5 @@ if ( is_admin() || wp_doing_cron() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
 	require_once __DIR__ . '/includes/class-updater.php';
 	Updater::init();
 }
-
-add_action(
-	'init',
-	static function () {
-		load_plugin_textdomain( 'kybernaut-multilingual', false, dirname( plugin_basename( PLUGIN_FILE ) ) . '/languages' );
-	}
-);
 
 register_activation_hook( __FILE__, array( Settings::class, 'activate' ) );
